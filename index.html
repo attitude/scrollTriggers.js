@@ -1,0 +1,255 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ScrollTriggers.js</title>
+        <meta name="description" content="Minimalistic scrolling vanilla JS plugin">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        html {box-sizing: border-box}html *,html *:after,html *::before {box-sizing: inherit}
+
+        #intro { background: #F44336; }
+
+        #middle {
+            background: #FFEB3B;
+            -webkit-transition: background 400ms ease-out;
+            transition: background 400ms ease-out;
+        }
+
+        .middle-changed #middle {
+            background: #2196F3;
+        }
+
+        #finish {
+            background: #E65100;
+        }
+
+        #finish .page-section-content {
+            opacity: 0;
+            -webkit-transform: translateY(100vh);
+                -ms-transform: translateY(100vh);
+                    transform: translateY(100vh);
+            -webkit-transition: opacity 100ms ease-out, -webkit-transform 1000ms cubic-bezier(0.63, 0.63, 0.6, 1.46);
+            transition: opacity 100ms ease-out, -webkit-transform 1000ms cubic-bezier(0.63, 0.63, 0.6, 1.46);
+            transition: opacity 100ms ease-out, transform 1000ms cubic-bezier(0.63, 0.63, 0.6, 1.46);
+            transition: opacity 100ms ease-out, transform 1000ms cubic-bezier(0.63, 0.63, 0.6, 1.46), -webkit-transform 1000ms cubic-bezier(0.63, 0.63, 0.6, 1.46)
+        }
+
+        .show-finish #finish .page-section-content {
+            opacity: 1;
+            -webkit-transform: translateY(0);
+                -ms-transform: translateY(0);
+                    transform: translateY(0);
+        }
+
+        #download-button {
+            background: white;
+            color: black;
+            font-weight: bold;
+            height: 9em;
+            line-height: 2em;
+            padding: 6em 4em 0 4em;
+            position: fixed;
+            right: 0;
+            text-decoration: none;
+            top: 0;
+            -webkit-transform: translateY(-9em);
+                -ms-transform: translateY(-9em);
+                    transform: translateY(-9em);
+            -webkit-transition: -webkit-transform 300ms ease-out;
+            transition: -webkit-transform 300ms ease-out;
+            transition: transform 300ms ease-out;
+            transition: transform 300ms ease-out, -webkit-transform 300ms ease-out;
+        }
+
+        #download-button:after {
+            bottom: 0;
+            content: "\2191";
+            height: 0;
+            left: 0;
+            line-height: 1em;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 1em;
+        }
+
+        .show-download #download-button {
+            -webkit-transform: translateY(-8em) rotateZ(45deg) translateX(50%);
+                -ms-transform: translateY(-8em) rotate(45deg) translateX(50%);
+                    transform: translateY(-8em) rotateZ(45deg) translateX(50%)
+        }
+
+        body {
+            background: black;
+            color: white;
+            font-family: Georgia, serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        #download-button,
+        h1, h2, h3, h4, h5, h6 {
+            font-family: sans-serif;
+            margin-top: 0;
+        }
+
+        p {margin-top: 0}
+        p a { color: inherit; }
+
+        .subheadline {
+            font-size: 1.25em;
+            font-style: italic;
+        }
+        .features {
+            font-family: sans-serif;
+            font-weight: bold;
+            text-align: left;
+        }
+        .button {
+            border: 1px solid;
+            border-radius: .25em;
+            color: inherit;
+            display: inline-block;
+            padding: .5em 1em;
+            text-decoration: none;
+        }
+        .button:hover,
+        .button:focus {
+            box-shadow: 0 .25em .2em rgba(0, 0, 0, 0.25);
+        }
+        .page {}
+        .page-section {
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .page-section-content {
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            bottom: 0;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            left: 0;
+            margin: auto;
+            max-width: 18em;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        @media (min-width: 30em) and (min-height: 30em) {
+            h1 {
+                font-size: 3em;
+            }
+            .page-section-content {
+                max-width: 28em;
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <div class="page">
+            <div class="page-section" id="intro">
+                <div class="page-section-content">
+                    <h1>Say hello to scrollTriggers.js!</h1>
+                    <p class="subheadline">Minimalistic vanilla JS scroll plugin</p>
+                    <ol class="features">
+                        <li>small, &lt; 2KB minified</li>
+                        <li>zero dependency</li>
+                        <li>before–during–after API</li>
+                    </ol>
+                    <p>Scroll down to begin.</p>
+                    <p>&darr;</p>
+                </div>
+            </div>
+            <div class="page-section" id="middle">
+                <div class="page-section-content">
+                    <h2>Nice to see you</h2>
+                    <p>Scroll further down, this will change just once</p>
+                    <p>&darr;</p>
+                </div>
+            </div>
+            <div class="page-section" id="finish">
+                <div class="page-section-content">
+                    <h2>Use me please!</h2>
+                    <p><a href="//github.com/attitude/scrollTriggers.js" class="button">Download on GitHub</a></p>
+                    <p>Mady with &hearts; by <a href="//twitter.com/martin_adamko" target="_blank">@martin_adamko</a></p>
+                </div>
+            </div>
+            <a id="download-button" href="//github.com/attitude/scrollTriggers.js">Download on GitHub</a>
+        </div>
+        <script src="src/scrollTriggers.min.js"></script>
+        <script>
+        var $body = document.getElementsByTagName('body')[0],
+            states = {
+                downloadVisible: false,
+                middleChanged: false,
+                finishVisible: false
+            };
+
+        window.addScrollingTriggers([{
+            el: 'middle',
+            before: function() {
+                if (states.downloadVisible) {
+                    $body.className = $body.className.replace(/\bshow-download\b/, '').trim();
+                }
+
+                states.downloadVisible = false;
+            },
+            during: function () {
+                if (!states.downloadVisible) {
+                    $body.className = ($body.className + ' show-download').trim();
+                }
+
+                if (!states.middleChanged) {
+                    $body.className = ($body.className + ' middle-changed').trim();
+                    states.middleChanged = true;
+                }
+
+                states.downloadVisible = true;
+            },
+            after: function (direction) {
+                if (!states.downloadVisible) {
+                    $body.className = ($body.className + ' show-download').trim();
+                }
+
+                states.downloadVisible = true;
+            }
+        },{
+            el: 'finish',
+            before: function () {
+                if (states.finishVisible) {
+                    $body.className = $body.className.replace(/\bshow-finish\b/, '').trim();
+                }
+
+                states.finishVisible = false;
+            },
+            during: function () {
+                if (!states.finishVisible) {
+                    $body.className = ($body.className + ' show-finish').trim();
+                }
+
+                states.finishVisible = true;
+            },
+            origin: 0.2
+        }]);
+        </script>
+        <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', 'UA-82820336-1', 'auto');ga('send', 'pageview');</script>
+    </body>
+</html>
