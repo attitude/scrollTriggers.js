@@ -48,18 +48,20 @@
 
     w.addScrollingTriggers = function (triggers) {
         if (Object.prototype.toString.call(triggers) !== '[object Array]') {
+            if (w.console) {
+                w.console.warn('`triggers` must be an array', triggers);
+            }
+
             return;
         }
 
         triggers = triggers.filter(function (v) {
             return typeof v === 'object' && Object.prototype.toString.call(v) !== '[object Array]';
         }).map(function (v) {
-            var el;
-
-            if (Object.prototype.toString.call(v.el) === '[object HTMLDivElement]') {
-                el = v.el;
+            if (v.el instanceof Element) {
+                var el = v.el;
             } else {
-                el = w.document.getElementById(v.el);
+                var el = w.document.getElementById(v.el);
             }
 
             if (el) {

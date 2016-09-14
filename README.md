@@ -6,7 +6,7 @@ Minimalistic scrolling vanilla JS plugin, zero dependency < 2KB minified.
 
 ## Options
 
-- `el` - `[object HTMLDivElement]` or `string` (element id)
+- `el` - `Element` or `string` (element id)
 - `before`, `during`, `after` - `[object Function]` callback
 - `origin` – `float` from `0` to `1`, default: `0.5`,
   where 0 = top of the screen, 1 = bottom of the screen
@@ -24,7 +24,7 @@ window.addScrollingTriggers([{
     during: function () {
         App.api.navigationVisible(true);
     },
-    after: function (direction) {
+    after: function () {
         App.api.navigationVisible(false);
     },
     origin: 1
