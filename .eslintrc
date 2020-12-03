@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "plugin:compat/recommended",
+    "with-attitude"
+  ],
+  "env": {
+    "browser": true,
+    "es2020": true, // parserOptions": { "ecmaVersion": 11 }
+  },
+  "plugins": [
+    "only-warn", // Comment out to be more strict
+    "flowtype",
+    "import",
+    "jsx-a11y",
+    "react", // You might not need these
+    "react-native" // You might not need these
+  ],
+  "parser": "babel-eslint",
+  "rules": {
+    // TODO: Move to config
+    "sort-keys": "error"
+  },
+  "ignorePatterns": ["/dist/*.js"],
+  "reportUnusedDisableDirectives": true
+}

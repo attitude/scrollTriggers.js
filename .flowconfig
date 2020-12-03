@@ -1,0 +1,23 @@
+[ignore]
+; We don't need to type check results:
+.*/dist/.*
+
+[include]
+; Flow will look for files with the extensions
+; .js, .jsx, .mjs, .cjs and .json underneath this
+; project subdirectory:
+src/
+script.js
+
+[libs]
+; flow-typed/ - use with npm `flow-typed` package
+; (no need to define flow-typed here)
+flow/
+
+[declarations]
+
+[lints]
+
+[strict]
+
+[options]

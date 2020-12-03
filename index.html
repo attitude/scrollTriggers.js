@@ -120,7 +120,6 @@
         .button:focus {
             box-shadow: 0 .25em .2em rgba(0, 0, 0, 0.25);
         }
-        .page {}
         .page-section {
             height: 100vh;
             overflow: hidden;
@@ -192,64 +191,10 @@
                     <p>Mady with &hearts; by <a href="//twitter.com/martin_adamko" target="_blank">@martin_adamko</a></p>
                 </div>
             </div>
-            <a id="download-button" href="//github.com/attitude/scrollTriggers.js">Download on GitHub</a>
+            <a id="download-button" href="//github.com/attitude/scrollTriggers.min.js">Download on GitHub</a>
         </div>
-        <script src="src/scrollTriggers.min.js"></script>
-        <script>
-        var $body = document.getElementsByTagName('body')[0],
-            states = {
-                downloadVisible: false,
-                middleChanged: false,
-                finishVisible: false
-            };
-
-        window.addScrollingTriggers([{
-            el: 'middle',
-            before: function() {
-                if (states.downloadVisible) {
-                    $body.className = $body.className.replace(/\bshow-download\b/, '').trim();
-                }
-
-                states.downloadVisible = false;
-            },
-            during: function () {
-                if (!states.downloadVisible) {
-                    $body.className = ($body.className + ' show-download').trim();
-                }
-
-                if (!states.middleChanged) {
-                    $body.className = ($body.className + ' middle-changed').trim();
-                    states.middleChanged = true;
-                }
-
-                states.downloadVisible = true;
-            },
-            after: function (direction) {
-                if (!states.downloadVisible) {
-                    $body.className = ($body.className + ' show-download').trim();
-                }
-
-                states.downloadVisible = true;
-            }
-        },{
-            el: 'finish',
-            before: function () {
-                if (states.finishVisible) {
-                    $body.className = $body.className.replace(/\bshow-finish\b/, '').trim();
-                }
-
-                states.finishVisible = false;
-            },
-            during: function () {
-                if (!states.finishVisible) {
-                    $body.className = ($body.className + ' show-finish').trim();
-                }
-
-                states.finishVisible = true;
-            },
-            origin: 0.2
-        }]);
-        </script>
+        <script src="dist/scrollTriggers.min.js"></script>
+        <script src="script.js"></script>
         <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', 'UA-82820336-1', 'auto');ga('send', 'pageview');</script>
     </body>
 </html>
